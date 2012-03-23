@@ -1,0 +1,16 @@
+h1. BeautyPy
+
+Beautify source code
+
+h2. Required packages
+
+pip install mercurial gitpython
+
+h2. Usage
+
+python main.py /path/to/source/folder/
+
+h2. License
+
+See LICENSE.
+
