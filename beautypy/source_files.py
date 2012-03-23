@@ -137,7 +137,7 @@ class GitHandler(BaseMetaHandler):
                 authors.append(user)
                 idx += 1
 
-            fdict['author']  = ', '.join(set(authors))
+            fdict['author']  = ', '.join([u for u in set(authors) if u != self.method])
             files.append(fdict)    
  
         return files
