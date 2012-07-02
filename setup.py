@@ -10,4 +10,6 @@ setup(
     url='https://github.com/iterativ/beautypy',
     packages=['beautypy'],
     zip_safe=False,
+    install_requires=['mercurial',
+                      'gitpython']
 )
