@@ -4,11 +4,19 @@ Beautify source code
 
 h2. Required packages
 
-pip install mercurial gitpython
+pip install -r requirements.pip 
 
 h2. Usage
 
 python main.py /path/to/source/folder/
+
+h2. Options
+
+python main.py -h
+
+h3. specify header file:
+
+python main.py -p templates/py.tmpl
 
 h2. License
 

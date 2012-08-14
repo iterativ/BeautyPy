@@ -58,20 +58,16 @@ class SourceHandler():
                 return h.get_file_metas(sources)
             except Exception, e:
                 print "\tNot working with '%s'. try fallback" % method
-                pass
 
     def set_header(self, source_ext, template, comment):
-        
         metas = self.get_file_metas(source_ext)
-        
         if os.path.isfile(template):
             template = open(template, 'r').read()
         
         template = Template(template)
         import codecs
         for meta in metas:
-            filepath = meta['file']
-                        
+            filepath = meta['file']        
             if os.path.isfile(filepath):
                 content = unicode(template.substitute(**meta))
                 old_header = True
