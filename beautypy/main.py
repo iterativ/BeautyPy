@@ -30,6 +30,21 @@ SOURCE_HEADERS = [{
                    'ext': 'py',
                    'tmpl' : "# -*- coding: utf-8 -*-\n#\n# Created on ${date}\n# @author: ${author}\n\n",
                    'comment': '#'
+                   },
+                   {
+                   'ext': 'js',
+                   'tmpl' : "/*\n* Created on ${date}\n* @author: ${author}\n*/\n\n",
+                   'comment': ['/*', '*', '*/']
+                   },
+                   {
+                   'ext': 'css',
+                   'tmpl' : "/*\n* Created on ${date}\n* @author: ${author}\n*/\n\n",
+                   'comment': ['/*', '*', '*/'],
+                   },
+                   {
+                   'ext': 'scss',
+                   'tmpl' : "/*\n* Created on ${date}\n* @author: ${author}\n*/\n\n",
+                   'comment': ['/*', '*', '*/']
                    }]
 
 def main():

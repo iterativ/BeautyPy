@@ -64,6 +64,11 @@ class SourceHandler():
         if os.path.isfile(template):
             template = open(template, 'r').read()
         
+        if isinstance(comment, (list, tuple)):
+            _comments = comment + ['\n']
+        else:
+            _comments = [comment, '\n']
+
         template = Template(template)
         import codecs
         for meta in metas:
@@ -72,9 +77,8 @@ class SourceHandler():
                 content = unicode(template.substitute(**meta))
                 old_header = True
                 
-                for line in codecs.open(filepath, 'r', "utf-8"):
-                    
-                    if old_header and line[0] in [comment, '\n']:
+                for line in codecs.open(filepath, 'r', "utf-8"):     
+                    if old_header and (line[0] in _comments or line[0:2] in _comments):
                         pass
                     else:
                         old_header = False
@@ -121,19 +125,18 @@ class GitHandler(BaseMetaHandler):
         self.repo = git.Repo(self.rootpath) 
         files = []
         for afile in source_files:
-            idx = 0
+            
             fdict = self._init_ctx(afile)  
             authors = []
             for commit in self.repo.iter_commits(paths=afile):
-                if idx == 0:
-                    fdict.update(self._secs_to_str(commit.authored_date))
+                fdict.update(self._secs_to_str(commit.authored_date))
                 user = commit.author.name
                 if commit.author.email:
                     user = '%s <%s>' % (user, commit.author.email)
                 authors.append(user)
-                idx += 1
-
+                
             fdict['author']  = ', '.join([u for u in set(authors) if u != self.method])
+         
             files.append(fdict)    
  
         return files
