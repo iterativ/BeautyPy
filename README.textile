@@ -18,6 +18,11 @@ h3. specify header file:
 
 python main.py -p templates/py.tmpl
 
+h3. Example
+
+#Go to your app dir and
+python ../BeautyPy/beautypy/main.py .  -p ../BeautyPy/templates/py.tmpl -j ../BeautyPy/templates/js.tmpl -s ../BeautyPy/templates/css.tmpl 
+
 h2. License
 
 See LICENSE.
